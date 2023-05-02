@@ -10,13 +10,21 @@ import Login from "./Pages/Login/Login.jsx";
 import Blog from "./Pages/Blog.jsx";
 import Register from "./Pages/Login/Register.jsx";
 import AuthProvider from "./Provider/AuthProvider.jsx";
+import Error from "./Pages/Error.jsx";
+import HomeLayout from "./Pages/Layout/HomeLayout.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App></App>,
+    errorElement: <Error></Error>,
     children: [
       {
+        path: "/",
+        element: <Main></Main>,
+      },
+      {
+
         path: "/home",
         element: <Main></Main>,
       },

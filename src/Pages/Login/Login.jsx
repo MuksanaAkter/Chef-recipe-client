@@ -1,16 +1,21 @@
 import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
-import { FaGoogle, FaGithub } from 'react-icons/fa';
+import { FaGoogle, FaGithub } from "react-icons/fa";
 import { Button } from "react-bootstrap";
-import { GithubAuthProvider, GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
+import {
+  GithubAuthProvider,
+  GoogleAuthProvider,
+  getAuth,
+  signInWithPopup,
+} from "firebase/auth";
 import app from "../../firebase/firebase.config";
 
 const Login = () => {
-    const[user, setUser]= useState(null);
-    const auth = getAuth(app);
-    const GoogleProvider = new GoogleAuthProvider();
-    const GitProvider = new GithubAuthProvider();
+  const [user, setUser] = useState(null);
+  const auth = getAuth(app);
+  const GoogleProvider = new GoogleAuthProvider();
+  const GitProvider = new GithubAuthProvider();
   const { signIn } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
@@ -34,34 +39,31 @@ const Login = () => {
         console.log(error);
       });
   };
-const handleGoogle =(event)=> {
+  const handleGoogle = (event) => {
     event.preventDefault();
     signInWithPopup(auth, GoogleProvider)
-  .then((result) => {
-    const logUser= result.user;
-    console.log(logUser);
-    setUser(logUser)
-  })
-  .catch(error=> {
-    console.log('error', error.message);
-  })
+      .then((result) => {
+        const logUser = result.user;
+        console.log(logUser);
+        setUser(logUser);
+      })
+      .catch((error) => {
+        console.log("error", error.message);
+      });
+  };
 
-}
-
-const handleGit =(event)=> {
+  const handleGit = (event) => {
     event.preventDefault();
     signInWithPopup(auth, GitProvider)
-  .then((result) => {
-    const logeduser= result.user;
-    console.log(logeduser);
-    setUser(logeduser)
-  })
-  .catch(error=> {
-    console.log('error', error.message);
-  })
-
-}
-
+      .then((result) => {
+        const logeduser = result.user;
+        console.log(logeduser);
+        setUser(logeduser);
+      })
+      .catch((error) => {
+        console.log("error", error.message);
+      });
+  };
 
   const bgimg =
     "https://as1.ftcdn.net/v2/jpg/03/46/14/28/1000_F_346142850_fnv89mnTesyNU3t8zbbMc5yYtN9whSOC.jpg";
@@ -75,12 +77,13 @@ const handleGit =(event)=> {
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
         height: "700px",
-        weight:"",
+        weight: "",
       }}
     >
       please login
       <div className="container text-white">
-        <div className="w-50 mx-auto m-5 p-5">
+        <div style={{backgroundColor:"#706c6c",
+        opacity:0.9}} className="w-50 mx-auto m-5 p-5">
           <h2 className="text-white pt-5">Please Login</h2>
           <form onSubmit={handleLogin}>
             <div className="form-group mb-3">
@@ -120,33 +123,25 @@ const handleGit =(event)=> {
                 Remember me
               </label>
             </div>
-            <button type="submit" className="btn btn-primary">
+            <button type="submit" className="btn btn-primary mb-4">
               Login
             </button>
-
           </form>
-          <p>
-            <small className="text-white">
-              Forget Password? Please{" "}
-              <button
-                // onClick={handleResetPassword}
-                className="btn btn-link"
-              >
-                Reset Password
-              </button>
-            </small>
-          </p>
           <div className="mb-4">
-          <Button onClick={handleGoogle} className='mx-3' variant="primary"> <FaGoogle /> Login with Google</Button>
-            <Button onClick={handleGit} variant="secondary"> <FaGithub></FaGithub> Login with Github</Button>
+            <Button onClick={handleGoogle} className="me-3" variant="primary">
+              {" "}
+              <FaGoogle /> Login with Google
+            </Button>
+            <Button onClick={handleGit} variant="secondary">
+              {" "}
+              <FaGithub></FaGithub> Login with Github
+            </Button>
           </div>
-          <p
-             className="text-white">
-              New to this website? Please <Link to="/register">Register</Link>
-            
+          <p className="text-white">
+            New to this website? Please <Link to="/register">Register</Link>
           </p>
           {/* <p className='text-danger'>{error}</p>
-            <p className='text-success'>{success}</p> */}
+           */}
         </div>
       </div>
     </div>

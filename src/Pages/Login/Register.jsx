@@ -6,9 +6,15 @@ import { AuthContext } from "../../Provider/AuthProvider";
 const Register = () => {
   const { createUser } = useContext(AuthContext);
   const [accepted, setAccepted] = useState(false);
+  const [success, setSuccess] = useState("");
+  const [error, setError] = useState("");
+  const [PassError, setPassError] = useState("");
 
   const handleRegister = (event) => {
     event.preventDefault();
+    setSuccess("");
+    setError("");
+    setPassError("");
     const form = event.target;
     const name = form.name.value;
     const photo = form.photo.value;
@@ -16,35 +22,53 @@ const Register = () => {
     const password = form.password.value;
     const ConfirmPassword = form.ConfirmPassword.value;
 
+    if (password !== ConfirmPassword) {
+      setPassError("Password did not match");
+      return;
+    } else if (!/(?=.*[A-Z])/.test(password)) {
+      setPassError("Please add atleast one Upperase");
+      return;
+    } else if (password.length < 6) {
+      setPassError("Please add atleast 6 charecters in your password");
+      return;
+    }
+
     console.log(name, photo, email, password, ConfirmPassword);
     createUser(email, password)
       .then((result) => {
         const createdUser = result.user;
         console.log(createdUser);
+        setError("");
+        event.target.reset();
+        setSuccess("User create successfully");
       })
       .catch((error) => {
         console.log(error);
+        setError(error.message);
       });
   };
 
-  // const handleAccepted = event =>{
-  //     setAccepted(event.target.checked)
-  // }
+  const handleAccepted = (event) => {
+    setAccepted(event.target.checked);
+  };
   const bgimg =
     "https://t3.ftcdn.net/jpg/03/46/14/30/360_F_346143059_HJSSw7TxF0C7SnZcrXYN2vR7DHHOCOxJ.jpg";
   return (
-    <div className="img-fluid"
+    <div
+      className="img-fluid"
       style={{
         backgroundImage: `url(${bgimg})`,
         // backgroundImage: `url(${externalImage})`,
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
-        height: "100%",
-      }}
-    >
-      <div className="container text-white">
-        <div className="w-50 container float-right p-5">
+        height: "700px",
+      }}>
+      <div className="container text-white ">
+        <div
+          style={{ backgroundColor: "#706c6c", opacity: 0.9 }}
+          className="w-50 container float-right p-5"
+        >
           <h3>Please Register</h3>
           <Form onSubmit={handleRegister}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -84,6 +108,7 @@ const Register = () => {
                 required
               />
             </Form.Group>
+            <p className="text-danger">{PassError}</p>
             <Form.Group className="mb-3" controlId="formBasicPassword">
               <Form.Label>Confirm Password</Form.Label>
               <Form.Control
@@ -96,30 +121,28 @@ const Register = () => {
 
             <Form.Group className="mb-3" controlId="formBasicCheckbox">
               <Form.Check
-                // onClick={handleAccepted}
+                onClick={handleAccepted}
                 type="checkbox"
                 name="accept"
                 label={
-                  <>
+                  <h5>
                     Accept <Link to="/terms">Terms and Conditions</Link>{" "}
-                  </>
+                  </h5>
                 }
               />
             </Form.Group>
-            <Button
-              variant="primary"
-              // disabled={!accepted}
-              type="submit"
-            >
+            <Button variant="primary" disabled={!accepted} type="submit">
               Register
             </Button>
             <br />
-            <Form.Text className="text-secondary">
+            <h6 className="text-white mt-3">
               Already Have an Account? <Link to="/login">Login</Link>
-            </Form.Text>
+            </h6>
             <Form.Text className="text-success"></Form.Text>
             <Form.Text className="text-danger"></Form.Text>
           </Form>
+          <h5 className="text-danger">{error}</h5>
+          <h5 className="text-primary">{success}</h5>
         </div>
       </div>
     </div>

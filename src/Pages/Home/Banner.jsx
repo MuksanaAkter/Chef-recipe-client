@@ -6,7 +6,7 @@ const Banner = () => {
     "https://post.healthline.com/wp-content/uploads/2021/09/Bibimpap-korean-food-1200x628-facebook-1200x628.jpg";
   return (
     <div>
-      <div className="container">
+      <div style={{ backgroundColor: "#cfcfcf", opacity: 0.9 }} className="container mb-4">
         <Carousel variant="dark">
           <Carousel.Item className="">
             <div className="row align-items-center">
@@ -23,7 +23,7 @@ const Banner = () => {
               </div>
               <div className="col-md">
                 <img
-                  className="d-block w-100"
+                  className="d-block w-100 img-fluid"
                   src="https://static.toiimg.com/thumb/82085026.cms?resizemode=4&width=1200"
                   alt="First slide"
                 />

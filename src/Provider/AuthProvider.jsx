@@ -5,7 +5,7 @@ import app from '../firebase/firebase.config';
 export  const AuthContext = createContext(null);
 
 const auth = getAuth(app);
-const GoogleProvider = new GoogleAuthProvider();
+
 
 const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null);
@@ -15,7 +15,6 @@ const AuthProvider = ({children}) => {
         setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password);
     }
-    const GoogleProvider = new GoogleAuthProvider();
 
     const signIn = (email, password) => {
         setLoading(true);
@@ -28,7 +27,7 @@ const AuthProvider = ({children}) => {
     
     useEffect(()=>{
         const unsubscribe = onAuthStateChanged(auth, loggedUser => {
-            console.log('logged in user inside auth state observer', loggedUser)
+            //console.log('logged in user inside auth state observer', loggedUser)
             setUser(loggedUser);
             setLoading(false);
         })
@@ -44,7 +43,6 @@ const AuthProvider = ({children}) => {
         signIn,
         logOut,
         loading,
-        GoogleProvider
     }
     return (
         <AuthContext.Provider value={authInfo}>
