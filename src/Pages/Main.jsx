@@ -7,7 +7,6 @@ const Main = () => {
     return (
         <div>
             main page
-            <NavigationBar></NavigationBar>
             <Banner></Banner>
         </div>
     );

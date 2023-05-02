@@ -1,43 +1,129 @@
-import React from 'react';
-import { Button, Container } from 'react-bootstrap';
-import { Form, Link } from 'react-router-dom';
+import React, { useContext, useState } from "react";
+import { Button, Container, Form } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Register = () => {
-    return (
-        <div>
-            Pkease reg
-            
-            <div className='w-25 mx-auto'>
-            <h2>Please Login</h2>
-            <form 
-            //onSubmit={handleLogin}
-            >
-                <div className="form-group mb-3">
-                    <label htmlFor="email">Email address</label>
-                    <input type="email" name='email' 
-                    // ref={emailRef}
-                     className="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" required />
+  const { createUser } = useContext(AuthContext);
+  const [accepted, setAccepted] = useState(false);
 
-                </div>
-                <div className="form-group mb-3">
-                    <label htmlFor="password">Password</label>
-                    <input type="password" name='password' className="form-control" id="password" placeholder="Password" required />
-                </div>
-                <div className="form-check mb-3">
-                    <input type="checkbox" className="form-check-input" id="rememberMe" />
-                    <label className="form-check-label" htmlFor="rememberMe">Remember me</label>
-                </div>
-                <button type="submit" className="btn btn-primary">Submit</button>
-            </form>
-            <p><small>Forget Password? Please <button 
-            // onClick={handleResetPassword}
-             className='btn btn-link'>Reset Password</button></small></p>
-            <p><small>New to this website? Please <Link to="/register">Register</Link></small></p>
-            {/* <p className='text-danger'>{error}</p>
-            <p className='text-success'>{success}</p> */}
+  const handleRegister = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    const photo = form.photo.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    const ConfirmPassword = form.ConfirmPassword.value;
+
+    console.log(name, photo, email, password, ConfirmPassword);
+    createUser(email, password)
+      .then((result) => {
+        const createdUser = result.user;
+        console.log(createdUser);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  // const handleAccepted = event =>{
+  //     setAccepted(event.target.checked)
+  // }
+  const bgimg =
+    "https://t3.ftcdn.net/jpg/03/46/14/30/360_F_346143059_HJSSw7TxF0C7SnZcrXYN2vR7DHHOCOxJ.jpg";
+  return (
+    <div className="img-fluid"
+      style={{
+        backgroundImage: `url(${bgimg})`,
+        // backgroundImage: `url(${externalImage})`,
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
+        height: "100%",
+      }}
+    >
+      <div className="container text-white">
+        <div className="w-50 container float-right p-5">
+          <h3>Please Register</h3>
+          <Form onSubmit={handleRegister}>
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Label>Name</Form.Label>
+              <Form.Control
+                type="text"
+                name="name"
+                placeholder="Your Name"
+                required
+              />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Label>Photo URL</Form.Label>
+              <Form.Control
+                type="text"
+                name="photo"
+                placeholder="Photo URL"
+                required
+              />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Label>Email address</Form.Label>
+              <Form.Control
+                type="email"
+                name="email"
+                placeholder="Enter email"
+                required
+              />
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="formBasicPassword">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                type="password"
+                name="password"
+                placeholder="Password"
+                required
+              />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicPassword">
+              <Form.Label>Confirm Password</Form.Label>
+              <Form.Control
+                type="password"
+                name="ConfirmPassword"
+                placeholder="Confirm Password"
+                required
+              />
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="formBasicCheckbox">
+              <Form.Check
+                // onClick={handleAccepted}
+                type="checkbox"
+                name="accept"
+                label={
+                  <>
+                    Accept <Link to="/terms">Terms and Conditions</Link>{" "}
+                  </>
+                }
+              />
+            </Form.Group>
+            <Button
+              variant="primary"
+              // disabled={!accepted}
+              type="submit"
+            >
+              Register
+            </Button>
+            <br />
+            <Form.Text className="text-secondary">
+              Already Have an Account? <Link to="/login">Login</Link>
+            </Form.Text>
+            <Form.Text className="text-success"></Form.Text>
+            <Form.Text className="text-danger"></Form.Text>
+          </Form>
         </div>
-        </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default Register;
