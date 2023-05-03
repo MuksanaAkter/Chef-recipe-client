@@ -8,7 +8,7 @@ const Bestrestaurent = () => {
         Considering the ingredients and cooking methods of the traditional
         Korean diet, it's generally considered healthy. Because they're often
         high in vegetables and cooked without much oil, Korean meals are often
-        lower in calories than traditional American meals
+        lower in calories than traditional American meals.
       </h5>
       <div className="row my-5 d-flex justify-content-center">
         <div  className="col col-md-4 mb-3">

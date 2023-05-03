@@ -5,7 +5,7 @@ const Banner = () => {
   const bgimg =
     "https://post.healthline.com/wp-content/uploads/2021/09/Bibimpap-korean-food-1200x628-facebook-1200x628.jpg";
   return (
-    <div>
+    <div style={{ backgroundColor: "#cfcfcf", opacity: 0.9 }}>
       <div style={{ backgroundColor: "#cfcfcf", opacity: 0.9 }} className="container mb-4">
         <Carousel variant="dark">
           <Carousel.Item className="">

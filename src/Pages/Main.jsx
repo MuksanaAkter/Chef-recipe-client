@@ -4,14 +4,21 @@ import Banner from './Home/Banner';
 import { Link, Outlet } from 'react-router-dom';
 import Bestrestaurent from './Home/Bestrestaurent';
 import SpecialDish from './Home/specialDish';
+import ChefsCard from './Card/ChefsCard';
+import ChefData from './Card/ChefData';
 
 const Main = () => {
     return (
         <div>
            
             <Banner></Banner>
-            <Bestrestaurent></Bestrestaurent>
+            <ChefData></ChefData>
             <SpecialDish></SpecialDish>
+            <Bestrestaurent></Bestrestaurent>
+            
+        
+            
+            
             
         </div>
     );

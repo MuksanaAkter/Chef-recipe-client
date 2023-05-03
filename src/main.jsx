@@ -12,6 +12,8 @@ import Register from "./Pages/Login/Register.jsx";
 import AuthProvider from "./Provider/AuthProvider.jsx";
 import Error from "./Pages/Error.jsx";
 import HomeLayout from "./Pages/Layout/HomeLayout.jsx";
+import ChefLayout from "./Pages/Layout/ChefLayout.jsx";
+import RecipeData from "./Pages/Card/RecipeData.jsx";
 
 const router = createBrowserRouter([
   {
@@ -24,7 +26,6 @@ const router = createBrowserRouter([
         element: <Main></Main>,
       },
       {
-
         path: "/home",
         element: <Main></Main>,
       },
@@ -39,6 +40,22 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register></Register>,
+      },
+      // {
+      //   path: "/recipe",
+      //   element: <Register></Register>,
+      // },
+    ],
+  },
+  {
+    path: "chef",
+    element: <ChefLayout></ChefLayout>,
+    children: [
+      {
+        path: ":id",
+        element: <RecipeData></RecipeData>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/chef/${params.id}`),
       },
     ],
   },
