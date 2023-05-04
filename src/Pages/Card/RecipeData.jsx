@@ -25,17 +25,17 @@ const RecipeData = () => {
         <div className="p-md-5">
         <h2>{chef_name}</h2>
         <h6 className='my-3'>
-            Year of experience: {bio}
+             {bio}
           </h6>
-          <h6 className='my-3'>
+          <h5 className='my-3'>
             Year of experience: {years_of_experience}
-          </h6>
-          <h6 className='my-3'>
+          </h5>
+          <h5 className='my-3'>
             Likes: {likes}
-          </h6>
-          <h6>
+          </h5>
+          <h5>
           Numbers of recipes: {number_of_recipes}
-          </h6>
+          </h5>
         </div>
         <div className="p-md-5" >
           <img style={{height:"300px", width:"400px"}} src={chef_picture} alt="" />

@@ -27,7 +27,8 @@ const ChefsCard = ({chef}) => {
         </Card.Body>
         <Card.Footer className='d-flex  justify-content-between'>
         <h5 className='mt-2'  variant="primary"> <FaThumbsUp></FaThumbsUp> Likes: {likes}   </h5>
-          <Link to={`/chef/${_id}`}>View Recipe <FaArrowRight className=''></FaArrowRight></Link>
+        <Button className='text-white' variant="secondary"><Link style={{color:"white"}}to={`/chef/${_id}`}>View Recipe <FaArrowRight className=''></FaArrowRight></Link></Button>
+      
         
         </Card.Footer>
       </Card>

@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 
 const Register = () => {
@@ -9,7 +9,9 @@ const Register = () => {
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
   const [PassError, setPassError] = useState("");
-
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/login";
   const handleRegister = (event) => {
     event.preventDefault();
     setSuccess("");
@@ -37,6 +39,7 @@ const Register = () => {
     createUser(email, password)
       .then((result) => {
         const createdUser = result.user;
+        navigate(from, { replace: true });
         console.log(createdUser);
         setError("");
         event.target.reset();
@@ -108,7 +111,7 @@ const Register = () => {
                 required
               />
             </Form.Group>
-            <p className="text-danger">{PassError}</p>
+            <h5 className="text-warning">{PassError}</h5>
             <Form.Group className="mb-3" controlId="formBasicPassword">
               <Form.Label>Confirm Password</Form.Label>
               <Form.Control
@@ -141,8 +144,8 @@ const Register = () => {
             <Form.Text className="text-success"></Form.Text>
             <Form.Text className="text-danger"></Form.Text>
           </Form>
-          <h5 className="text-danger">{error}</h5>
-          <h5 className="text-primary">{success}</h5>
+          <h5 className="text-warning">{error}</h5>
+          <h5 className="text-success">{success}</h5>
         </div>
       </div>
     </div>
