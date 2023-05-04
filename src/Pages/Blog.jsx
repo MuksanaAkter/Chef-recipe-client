@@ -15,9 +15,6 @@ const options = {
         <div className="">
           <h1 className="text-center text-danger my-5">Blog Page</h1>
         </div>
-        <div className="container d-flex justify-content-end my-4">
-        <Button  className="p-2" variant="outline-primary" >Make PDF</Button>
-        </div>
         <div>
         <div className="container d-flex justify-content-end my-4">
     <ReactToPdf targetRef={ref} filename="Blog.pdf">

@@ -29,8 +29,7 @@ const NavigationBar = () => {
                 </li>
                 <li>
                   <Link to="/blog" 
-                  // style={({ isActive }) => 
-                  //     (isActive ? {color: 'red'} : {color: 'blue'})} 
+              
                       className="nav-link">
                     blog
                   </Link>
@@ -40,9 +39,7 @@ const NavigationBar = () => {
                     Contact
                   </Link>
                 </li>
-                {/* <Nav.Link to="/home">Home</Nav.Link>
-            <Nav.Link href="/blog">Blog</Nav.Link>
-            <Nav.Link href="#features">Menu</Nav.Link> */}
+               
               </Nav>
               <Nav>
                 <Nav.Link href="#deets">pic</Nav.Link>

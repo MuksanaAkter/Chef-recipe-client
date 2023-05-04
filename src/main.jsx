@@ -45,22 +45,11 @@ const router = createBrowserRouter([
       {
         path: "/chef/:id",
         element: <PrivateRoute><RecipeData></RecipeData></PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:3000/chef/${params.id}`),
+        loader: ({ params }) => fetch(`https://chef-recipe-server-muksanaakter.vercel.app/chef/${params.id}`),
       },
     ],
   },
-  // {
-  //   path: "chef",
-  //   element: <ChefLayout></ChefLayout>,
-  //   children: [
-  //     {
-  //       path: ":id",
-  //       element:<PrivateRoute><RecipeData></RecipeData></PrivateRoute> ,
-  //       loader: ({ params }) =>
-  //         fetch(`http://localhost:3000/chef/${params.id}`),
-  //     },
-  //   ],
-  // },
+
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

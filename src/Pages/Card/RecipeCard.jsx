@@ -16,11 +16,6 @@ const RecipeCard = ({recipes}) => {
         toast("Added as Favourite recipe")
       };
 
-    // const notify = () =>(
-
-    // toast("Added as Favourite recipe")
-    // )
-    //console.log(recipes.rating1);
     const { _id, recipe_Img1, recipe_name1, ingredients, cooking_method1,rating1 } = recipes;
     return (
         <div>
@@ -42,7 +37,6 @@ const RecipeCard = ({recipes}) => {
           {cooking_method1}
         </Card.Text>
        
-        {/* <Button variant="primary">{rating1}</Button> */}
       </Card.Body>
       <Card.Footer className='d-flex  justify-content-between'>
       <div className='d-flex align-items-enter'>
