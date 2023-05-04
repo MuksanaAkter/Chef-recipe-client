@@ -21,7 +21,7 @@ const Banner = () => {
                 </h3>
               </div>
               <div className="col-md">
-                <img 
+                <img style={{height:"30rem"}}
                   className="d-block w-100 img-fluid"
                   src="https://static.toiimg.com/thumb/82085026.cms?resizemode=4&width=1200"
                   alt="First slide"
