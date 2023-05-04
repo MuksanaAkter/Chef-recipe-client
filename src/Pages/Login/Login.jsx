@@ -80,7 +80,7 @@ const Login = () => {
         weight: "",
       }}
     >
-      please login
+      p
       <div className="container text-white">
         <div style={{backgroundColor:"#706c6c",
         opacity:0.9}} className="w-50 mx-auto m-5 p-5">

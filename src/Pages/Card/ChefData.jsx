@@ -13,7 +13,7 @@ const ChefData = () => {
     //console.log(chefs);
     return (
         <div className='container '>
-            <h1 className='text-center my-5'>Our Honourable Chef</h1>
+            <h1 className='text-center my-5'>Our Honourable Chefs</h1>
             <div className=''>
             <div className='d-md-flex flex-wrap justify-content-center'>
                     {chefs.map((chef) => (

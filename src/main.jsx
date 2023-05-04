@@ -14,6 +14,7 @@ import Error from "./Pages/Error.jsx";
 import HomeLayout from "./Pages/Layout/HomeLayout.jsx";
 import ChefLayout from "./Pages/Layout/ChefLayout.jsx";
 import RecipeData from "./Pages/Card/RecipeData.jsx";
+import PrivateRoute from "./Provider/PrivateRoute.jsx";
 
 const router = createBrowserRouter([
   {
@@ -41,24 +42,25 @@ const router = createBrowserRouter([
         path: "/register",
         element: <Register></Register>,
       },
-      // {
-      //   path: "/recipe",
-      //   element: <Register></Register>,
-      // },
-    ],
-  },
-  {
-    path: "chef",
-    element: <ChefLayout></ChefLayout>,
-    children: [
       {
-        path: ":id",
-        element: <RecipeData></RecipeData>,
-        loader: ({ params }) =>
-          fetch(`http://localhost:3000/chef/${params.id}`),
+        path: "/chef/:id",
+        element: <PrivateRoute><RecipeData></RecipeData></PrivateRoute>,
+        loader: ({ params }) => fetch(`http://localhost:3000/chef/${params.id}`),
       },
     ],
   },
+  // {
+  //   path: "chef",
+  //   element: <ChefLayout></ChefLayout>,
+  //   children: [
+  //     {
+  //       path: ":id",
+  //       element:<PrivateRoute><RecipeData></RecipeData></PrivateRoute> ,
+  //       loader: ({ params }) =>
+  //         fetch(`http://localhost:3000/chef/${params.id}`),
+  //     },
+  //   ],
+  // },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

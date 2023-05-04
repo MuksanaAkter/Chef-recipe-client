@@ -1,16 +1,21 @@
 import React from 'react';
 import { Button, Card } from 'react-bootstrap';
 import { FaArrowRight, FaThumbsUp } from 'react-icons/fa';
+import LazyLoad from 'react-lazy-load';
 import { Link } from 'react-router-dom';
 
 const ChefsCard = ({chef}) => {
-    //console.log(chef);style={{ backgroundColor: "#cfcfcf", opacity: 0.9 }}
+    //console.log(recipe);
+    //style={{ backgroundColor: "#cfcfcf", opacity: 0.9 }}
     const { _id, chef_picture, chef_name, years_of_experience, number_of_recipes,likes } = chef;
     return (
         <div>
             <div className='me-5 mb-5'>
             <Card style={{width:"350px" ,backgroundColor: "#eff8fa"}}>
-        <Card.Img className='' style={{height:"200px"}} variant="top" src={chef_picture} />
+              <LazyLoad height={250} offset={100}>
+              <Card.Img className='' style={{height:"250px"}} variant="top" src={chef_picture} />
+              </LazyLoad>
+        {/* <Card.Img className='' style={{height:"250px"}} variant="top" src={chef_picture} /> */}
         <Card.Body>
           <h2>{chef_name}</h2>
           <h6 className='my-3'>
