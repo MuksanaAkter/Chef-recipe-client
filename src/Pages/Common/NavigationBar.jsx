@@ -2,7 +2,9 @@ import React, { useContext } from "react";
 import { Container, Navbar, Nav, NavDropdown, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
-
+import "react-tooltip/dist/react-tooltip.css";
+import { Tooltip } from "react-tooltip";
+import { Tooltip as ReactTooltip } from "react-tooltip";
 const NavigationBar = () => {
   const { user, logOut } = useContext(AuthContext);
 
@@ -22,15 +24,13 @@ const NavigationBar = () => {
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="me-auto">
                 <li>
-                  <Link  to="/home" className="nav-link">
+                  <Link to="/home" className="nav-link">
                     {" "}
                     Home{" "}
                   </Link>
                 </li>
                 <li>
-                  <Link to="/blog" 
-              
-                      className="nav-link">
+                  <Link to="/blog" className="nav-link">
                     blog
                   </Link>
                 </li>
@@ -39,15 +39,28 @@ const NavigationBar = () => {
                     Contact
                   </Link>
                 </li>
-               
               </Nav>
+              {user && (
+                <Tooltip anchorSelect="#clickable">
+                  <button className="bg-blue">{user.displayName}</button>
+                </Tooltip>
+              )}
+
               <Nav>
-                <Nav.Link href="#deets">pic</Nav.Link>
-              </Nav>
-              <Nav>
-                {/* {user && (
-                  <FaUserCircle style={{ fontSize: "2rem" }}></FaUserCircle>
-                )} */}
+                {user && (
+                  // <h4 style={{ fontSize: "2rem" }} className="text-white">{user.photoURL}</h4>
+
+                  <div id="clickable">
+                    {" "}
+                    <img
+                      className="rounded-circle mx-3"
+                      style={{ width: "40px" }}
+                      src={user.photoURL}
+                      alt=""
+                    />
+                  </div>
+                  // <FaUserCircle style={{ fontSize: "2rem" }}></FaUserCircle>
+                )}
 
                 {user ? (
                   <Button onClick={handleLogOut} variant="secondary">

@@ -7,6 +7,8 @@ import { Outlet } from "react-router-dom";
 import Main from "./Pages/Main";
 import NavigationBar from "./Pages/Common/NavigationBar";
 import Footer from "./Pages/Common/Footer";
+
+
 function App() {
   const [count, setCount] = useState(0);
 

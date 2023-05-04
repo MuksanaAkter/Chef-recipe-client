@@ -33,7 +33,8 @@ const Login = () => {
     signIn(email, password)
       .then((result) => {
         const loggedUser = result.user;
-        //console.log(loggedUser);
+        console.log(loggedUser);
+        setUser(loggedUser);
         navigate(from, { replace: true });
       })
       .catch((error) => {
@@ -48,6 +49,7 @@ const Login = () => {
         const logUser = result.user;
         console.log(logUser);
         setUser(logUser);
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.log("error", error.message);
@@ -61,6 +63,7 @@ const Login = () => {
         const logeduser = result.user;
         console.log(logeduser);
         setUser(logeduser);
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.log("error", error.message);

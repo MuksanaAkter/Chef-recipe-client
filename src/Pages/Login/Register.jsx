@@ -18,7 +18,7 @@ const Register = () => {
     setError("");
     setPassError("");
     const form = event.target;
-    const name = form.name.value;
+    const displayName= form.displayName.value;
     const photo = form.photo.value;
     const email = form.email.value;
     const password = form.password.value;
@@ -35,7 +35,7 @@ const Register = () => {
       return;
     }
 
-    console.log(name, photo, email, password, ConfirmPassword);
+    console.log(displayName, photo, email, password, ConfirmPassword);
     createUser(email, password)
       .then((result) => {
         const createdUser = result.user;
@@ -78,7 +78,7 @@ const Register = () => {
               <Form.Label>Name</Form.Label>
               <Form.Control
                 type="text"
-                name="name"
+                name="displayName"
                 placeholder="Your Name"
                 required
               />
