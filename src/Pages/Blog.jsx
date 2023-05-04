@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "react-bootstrap";
-//import ReactToPdf from 'react-to-pdf';
+import ReactToPdf from 'react-to-pdf';
 const Blog = () => {
   const ref = React.createRef();
 const options = {
@@ -19,16 +19,15 @@ const options = {
         <Button  className="p-2" variant="outline-primary" >Make PDF</Button>
         </div>
         <div>
-        {/* <div>
-    <ReactToPdf targetRef={ref} filename="div-blue.pdf" options={options} x={.5} y={.5} scale={0.8}>
+        <div className="container d-flex justify-content-end my-4">
+    <ReactToPdf targetRef={ref} filename="Blog.pdf">
         {({toPdf}) => (
-            <button onClick={toPdf}>Generate pdf</button>
+            <Button  className="p-2" variant="outline-primary" onClick={toPdf} >Make PDF</Button>
         )}
     </ReactToPdf>
-    <div style={{width: 500, height: 500, background: 'blue'}} ref={ref}/>
-</div> */}
+</div>
         </div>
-        <div className="container mx-auto">
+        <div className="container mx-auto " ref={ref}>
           <div style={{ backgroundColor: "#f7dddd" }} className="p-3 " >
           <h3 className="my-3">
             1. What is the differences between uncontrolled and controlled
