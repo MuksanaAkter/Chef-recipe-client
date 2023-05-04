@@ -13,6 +13,7 @@ import app from "../../firebase/firebase.config";
 
 const Login = () => {
   const [user, setUser] = useState(null);
+  const [error, setError] = useState("");
   const auth = getAuth(app);
   const GoogleProvider = new GoogleAuthProvider();
   const GitProvider = new GithubAuthProvider();
@@ -37,6 +38,7 @@ const Login = () => {
       })
       .catch((error) => {
         console.log(error);
+        setError(error.message);
       });
   };
   const handleGoogle = (event) => {
@@ -110,6 +112,7 @@ const Login = () => {
                 required
               />
             </div>
+            <h5 className="text-warning">{error}</h5>
             <div className="form-check mb-3">
               <input
                 type="checkbox"

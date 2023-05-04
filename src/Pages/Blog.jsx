@@ -1,4 +1,5 @@
 import React from "react";
+import { Button } from "react-bootstrap";
 //import ReactToPdf from 'react-to-pdf';
 const Blog = () => {
   const ref = React.createRef();
@@ -13,6 +14,9 @@ const options = {
       <div>
         <div className="">
           <h1 className="text-center text-danger my-5">Blog Page</h1>
+        </div>
+        <div className="container d-flex justify-content-end my-4">
+        <Button  className="p-2" variant="outline-primary" >Make PDF</Button>
         </div>
         <div>
         {/* <div>
@@ -71,6 +75,7 @@ const options = {
           Custom React JS hooks offer reusability as when a custom hook is created, it can be reused easily, which makes the code cleaner and reduces the time to write the code. It also enhances the rendering speed of the code as a custom hook does not need to be rendered again and again while rendering the whole code.
           </p>
           </div>
+          
         </div>
       </div>
     </div>
