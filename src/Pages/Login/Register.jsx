@@ -12,7 +12,8 @@ const Register = () => {
   const [PassError, setPassError] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location.state?.from?.pathname || "/login";
+  //console.log("login page location", location);
+  const from = location.state?.from?.pathname || "/";
   const handleRegister = (event) => {
     event.preventDefault();
     setSuccess("");
@@ -68,7 +69,7 @@ const Register = () => {
     setAccepted(event.target.checked);
   };
   const bgimg =
-    "https://t3.ftcdn.net/jpg/03/46/14/30/360_F_346143059_HJSSw7TxF0C7SnZcrXYN2vR7DHHOCOxJ.jpg";
+    "https://img.freepik.com/premium-photo/spices-herbs-dark-stone-background_103326-1816.jpg";
   return (
     <div
       className="img-fluid"
@@ -78,13 +79,14 @@ const Register = () => {
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
-        height: "700px",
+       
       }}
     >
-      <div className="container text-white ">
+      <div  className="row container mx-auto">
+      <div className="container text-white col-12 col-md-6 px-0 my-5">
         <div
           style={{ backgroundColor: "#706c6c", opacity: 0.9 }}
-          className="w-50 container float-right p-5"
+          className=" container float-right p-5"
         >
           <h3>Please Register</h3>
           <Form onSubmit={handleRegister}>
@@ -160,6 +162,10 @@ const Register = () => {
           </Form>
           <h5 className="text-warning">{error}</h5>
           <h5 className="text-success">{success}</h5>
+        </div>
+      </div>
+        <div className="col-12 col-md-6 px-0 my-5">
+          <img style={{  height: "697px" }} className="img-fluid" src="https://images.pexels.com/photos/262897/pexels-photo-262897.jpeg?cs=srgb&dl=pexels-pixabay-262897.jpg&fm=jpg" alt="" />
         </div>
       </div>
     </div>

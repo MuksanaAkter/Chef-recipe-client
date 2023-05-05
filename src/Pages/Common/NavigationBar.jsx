@@ -5,6 +5,7 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import "react-tooltip/dist/react-tooltip.css";
 import { Tooltip } from "react-tooltip";
 import { Tooltip as ReactTooltip } from "react-tooltip";
+import ActiveLink from "./ActiveLink";
 const NavigationBar = () => {
   const { user, logOut } = useContext(AuthContext);
 
@@ -23,22 +24,22 @@ const NavigationBar = () => {
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="me-auto">
-                <li>
-                  <Link to="/home" className="nav-link">
+                <li className="text-md-center ms-md-5 my-2">
+                  <ActiveLink to="/home" className="nav-link">
                     {" "}
                     Home{" "}
-                  </Link>
+                  </ActiveLink>
                 </li>
-                <li>
-                  <Link to="/blog" className="nav-link">
-                    blog
-                  </Link>
+                <li className="ms-md-5 my-2">
+                  <ActiveLink to="/blog" className="nav-link">
+                    Blog
+                  </ActiveLink>
                 </li>
-                <li>
-                  <Link to="#" className="nav-link">
+                {/* <li className="ms-md-5 my-2">
+                  <ActiveLink  className="nav-link">
                     Contact
-                  </Link>
-                </li>
+                  </ActiveLink>
+                </li> */}
               </Nav>
               {user && (
                 // <Tooltip className=""  place="BottomRight" anchorSelect="#clickable">

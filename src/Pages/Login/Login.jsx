@@ -33,7 +33,7 @@ const Login = () => {
     signIn(email, password)
       .then((result) => {
         const loggedUser = result.user;
-        console.log(loggedUser);
+        //console.log(loggedUser);
         setUser(loggedUser);
         navigate(from, { replace: true });
       })
@@ -71,7 +71,7 @@ const Login = () => {
   };
 
   const bgimg =
-    "https://as1.ftcdn.net/v2/jpg/03/46/14/28/1000_F_346142850_fnv89mnTesyNU3t8zbbMc5yYtN9whSOC.jpg";
+    "https://img.freepik.com/premium-photo/bay-leaf-black-pepper-black-background-condiments-flat-view-space-text_350891-622.jpg";
   return (
     <div
       className="img-fluid "
@@ -81,73 +81,85 @@ const Login = () => {
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
-        height: "700px",
+       
         weight: "",
       }}
     >
       p
-      <div className="container text-white">
-        <div style={{backgroundColor:"#706c6c",
-        opacity:0.9}} className="w-50 mx-auto m-5 p-5">
-          <h2 className="text-white pt-5">Please Login</h2>
-          <form onSubmit={handleLogin}>
-            <div className="form-group mb-3">
-              <label htmlFor="email">Email address</label>
-              <input
-                type="email"
-                name="email"
-                // ref={emailRef}
-                className="form-control"
-                id="email"
-                aria-describedby="emailHelp"
-                placeholder="Enter email"
-                required
-              />
+      <div className="row container mx-auto">
+        
+        <div className="container text-white col-12 col-md-5 px-0 ">
+          <div
+            style={{ backgroundColor: "#706c6c", opacity: 0.9 }}
+            className=" mx-auto m-5 p-5"
+          >
+            <h2 className="text-white pt-5">Please Login</h2>
+            <form onSubmit={handleLogin}>
+              <div className="form-group mb-3">
+                <label htmlFor="email">Email address</label>
+                <input
+                  type="email"
+                  name="email"
+                  // ref={emailRef}
+                  className="form-control"
+                  id="email"
+                  aria-describedby="emailHelp"
+                  placeholder="Enter email"
+                  required
+                />
+              </div>
+              <div className="form-group mb-3">
+                <label htmlFor="password">Password</label>
+                <input
+                  type="password"
+                  name="password"
+                  className="form-control"
+                  id="password"
+                  placeholder="Password"
+                  required
+                />
+              </div>
+              <h5 className="text-warning">{error}</h5>
+              <div className="form-check mb-3">
+                <input
+                  type="checkbox"
+                  className="form-check-input"
+                  id="rememberMe"
+                />
+                <label
+                  className="form-check-label text-white"
+                  htmlFor="rememberMe"
+                >
+                  Remember me
+                </label>
+              </div>
+              <button type="submit" className="btn btn-primary mb-4">
+                Login
+              </button>
+            </form>
+            <div className="mb-4">
+              <Button onClick={handleGoogle} className="me-3" variant="primary">
+                {" "}
+                <FaGoogle /> Login with Google
+              </Button>
+              <Button onClick={handleGit} variant="secondary">
+                {" "}
+                <FaGithub></FaGithub> Login with Github
+              </Button>
             </div>
-            <div className="form-group mb-3">
-              <label htmlFor="password">Password</label>
-              <input
-                type="password"
-                name="password"
-                className="form-control"
-                id="password"
-                placeholder="Password"
-                required
-              />
-            </div>
-            <h5 className="text-warning">{error}</h5>
-            <div className="form-check mb-3">
-              <input
-                type="checkbox"
-                className="form-check-input"
-                id="rememberMe"
-              />
-              <label
-                className="form-check-label text-white"
-                htmlFor="rememberMe"
-              >
-                Remember me
-              </label>
-            </div>
-            <button type="submit" className="btn btn-primary mb-4">
-              Login
-            </button>
-          </form>
-          <div className="mb-4">
-            <Button onClick={handleGoogle} className="me-3" variant="primary">
-              {" "}
-              <FaGoogle /> Login with Google
-            </Button>
-            <Button onClick={handleGit} variant="secondary">
-              {" "}
-              <FaGithub></FaGithub> Login with Github
-            </Button>
+            <p className="text-white">
+              New to this website? Please <Link to="/register"  >Register</Link>
+            </p>
+            {/* <p className='text-danger'>{error}</p>
+             */}
           </div>
-          <p className="text-white">
-            New to this website? Please <Link to="/register">Register</Link>
-          </p>
-          {/* <p className='text-danger'>{error}</p>
-           */}
+        </div>
+        <div className="col-12 col-md-7 px-0 my-5">
+          <img className="img-fluid"
+            style={{  height: "550px" }}
+            src="https://cdn-bmalj.nitrocdn.com/uirOOtSrYrqqUksKHkiSCjZGZlPeXsmk/assets/static/optimized/rev-939cb5a/images/South-Korean-Food-bibimbap.jpg"
+            alt=""
+          />
         </div>
       </div>
     </div>

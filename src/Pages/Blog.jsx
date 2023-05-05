@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "react-bootstrap";
+import { FaRegFilePdf } from "react-icons/fa";
 import ReactToPdf from 'react-to-pdf';
 const Blog = () => {
   const ref = React.createRef();
@@ -19,7 +20,7 @@ const options = {
         <div className="container d-flex justify-content-end my-4">
     <ReactToPdf targetRef={ref} filename="Blog.pdf">
         {({toPdf}) => (
-            <Button  className="p-2" variant="outline-primary" onClick={toPdf} >Make PDF</Button>
+            <Button  className="p-2" variant="outline-primary" onClick={toPdf} > <FaRegFilePdf></FaRegFilePdf> Make PDF</Button>
         )}
     </ReactToPdf>
 </div>

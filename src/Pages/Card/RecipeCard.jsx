@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Card,Image } from 'react-bootstrap';
 import { FaEye, FaHeart, FaRegBookmark, FaRegStar, FaShareAlt, FaStar } from 'react-icons/fa';
 import IngredientData from './ingredientData';
@@ -8,10 +8,10 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const RecipeCard = ({recipes}) => {
+ const [fav , setfav]= useState(false)
 
-    const handleClick = event => {
-        
-        event.currentTarget.disabled = true;
+    const handleClick =() => {
+        setfav(true);
         //console.log('button clicked');
         toast("Added as Favourite recipe")
       };
@@ -50,7 +50,7 @@ const RecipeCard = ({recipes}) => {
                     <span className='mx-2'> {rating1}</span>
         </div>
         <div>
-        <button type="submit" onClick={handleClick}className="" > <FaHeart className='text-danger'></FaHeart></button>
+        <button type="submit" onClick={handleClick} disabled={fav} className="" > <FaHeart className='text-danger'></FaHeart></button>
         <ToastContainer />
         </div>
         

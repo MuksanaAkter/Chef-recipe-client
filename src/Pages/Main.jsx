@@ -6,6 +6,7 @@ import Bestrestaurent from './Home/Bestrestaurent';
 import SpecialDish from './Home/specialDish';
 import ChefsCard from './Card/ChefsCard';
 import ChefData from './Card/ChefData';
+import Reviews from './Home/Reviews';
 
 const Main = () => {
     return (
@@ -14,6 +15,7 @@ const Main = () => {
             <Banner></Banner>
             <ChefData></ChefData>
             <SpecialDish></SpecialDish>
+            <Reviews/>
             <Bestrestaurent></Bestrestaurent>
             
         

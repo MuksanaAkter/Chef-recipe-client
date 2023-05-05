@@ -1,5 +1,5 @@
 import { Button, Card } from "react-bootstrap";
-import { FaArrowRight, FaThumbsUp } from "react-icons/fa";
+import { FaArrowRight, FaMedal, FaThumbsUp, FaUtensils } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useLoaderData, useParams } from "react-router-dom";
 import ChefsCard from "./ChefsCard";
@@ -28,14 +28,15 @@ const RecipeData = () => {
              {bio}
           </h6>
           <h5 className='my-3'>
-            Year of experience: {years_of_experience}
+            <FaMedal className="me-2"></FaMedal>Year of experience: <span className="text-danger"> {years_of_experience}</span>
           </h5>
-          <h5 className='my-3'>
-            Likes: {likes}
+          <h5> <FaUtensils className="me-2"></FaUtensils>
+            Numbers of recipes: <span className="text-danger">{number_of_recipes}</span> 
           </h5>
-          <h5>
-          Numbers of recipes: {number_of_recipes}
+          <h5 className='my-3'> <FaThumbsUp className="me-2"></FaThumbsUp> 
+             Likes: <span className="text-danger"> {likes}</span>
           </h5>
+          
         </div>
         <div className="p-md-5" >
           <img style={{height:"300px", width:"400px"}} src={chef_picture} alt="" />
