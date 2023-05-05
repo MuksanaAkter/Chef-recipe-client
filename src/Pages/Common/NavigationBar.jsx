@@ -41,19 +41,23 @@ const NavigationBar = () => {
                 </li>
               </Nav>
               {user && (
-                <Tooltip className="p-2"  place="left" type="warning"anchorSelect="#clickable">
-                  <button className="bg-blue">{user.displayName}</button>
+                // <Tooltip className=""  place="BottomRight" anchorSelect="#clickable">
+                //   <button className="bg-blue">{user.displayName}</button>
+                // </Tooltip>
+                <Tooltip anchorSelect="#clickable" className='text-dark bg-light'>
+                <button className='text-dark bg-light border-0 '>{user.displayName}</button>
                 </Tooltip>
+                
                 
               )}
 
               <Nav>
                 {user && (
 
-                  <div id="clickable">
+                  <div style={{ width: "50px" }} className="me-2" id="clickable">
                     {" "}
                     <img
-                      className="rounded-circle mx-3"
+                      className="rounded-circle "
                       style={{ width: "40px" }}
                       src={user.photoURL}
                       alt=""

@@ -47,7 +47,7 @@ const Login = () => {
     signInWithPopup(auth, GoogleProvider)
       .then((result) => {
         const logUser = result.user;
-        console.log(logUser);
+        //console.log(logUser);
         setUser(logUser);
         navigate(from, { replace: true });
       })
