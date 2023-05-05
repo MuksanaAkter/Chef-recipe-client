@@ -2,9 +2,10 @@ import React, { useContext, useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { updateProfile } from "firebase/auth";
 
 const Register = () => {
-  const { createUser } = useContext(AuthContext);
+  const { user, createUser } = useContext(AuthContext);
   const [accepted, setAccepted] = useState(false);
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
@@ -18,7 +19,7 @@ const Register = () => {
     setError("");
     setPassError("");
     const form = event.target;
-    const displayName= form.displayName.value;
+    const displayName = form.displayName.value;
     const photo = form.photo.value;
     const email = form.email.value;
     const password = form.password.value;
@@ -40,17 +41,29 @@ const Register = () => {
       .then((result) => {
         const createdUser = result.user;
         navigate(from, { replace: true });
-        console.log(createdUser);
+        //console.log(createdUser);
         setError("");
         event.target.reset();
         setSuccess("User create successfully");
+        updateUserData(result.user , displayName , photo);
       })
       .catch((error) => {
         console.log(error);
         setError(error.message);
       });
   };
-
+  const updateUserData = (user, displayName, photo) => {
+    updateProfile(user, {
+      displayName: displayName,
+      photoURL: photo,
+    })
+      .then(() => {
+        //console.log("user updated");
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
+  };
   const handleAccepted = (event) => {
     setAccepted(event.target.checked);
   };
@@ -66,7 +79,8 @@ const Register = () => {
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
         height: "700px",
-      }}>
+      }}
+    >
       <div className="container text-white ">
         <div
           style={{ backgroundColor: "#706c6c", opacity: 0.9 }}

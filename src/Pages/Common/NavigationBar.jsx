@@ -41,14 +41,14 @@ const NavigationBar = () => {
                 </li>
               </Nav>
               {user && (
-                <Tooltip anchorSelect="#clickable">
+                <Tooltip className="p-2"  place="left" type="warning"anchorSelect="#clickable">
                   <button className="bg-blue">{user.displayName}</button>
                 </Tooltip>
+                
               )}
 
               <Nav>
                 {user && (
-                  // <h4 style={{ fontSize: "2rem" }} className="text-white">{user.photoURL}</h4>
 
                   <div id="clickable">
                     {" "}
@@ -59,7 +59,7 @@ const NavigationBar = () => {
                       alt=""
                     />
                   </div>
-                  // <FaUserCircle style={{ fontSize: "2rem" }}></FaUserCircle>
+                  
                 )}
 
                 {user ? (
@@ -76,6 +76,7 @@ const NavigationBar = () => {
           </Container>
         </Navbar>
       </div>
+    
     </div>
   );
 };
